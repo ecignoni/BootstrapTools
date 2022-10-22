@@ -29,7 +29,7 @@ except ModuleNotFoundError:
         def __next__(self):
             try:
                 i, it = next(self.iterator)
-                print("Iterating: {:d}".format(i), end="\r")
+                print("Bootstrapping: {:d}".format(i), end="\r")
                 return it
             except StopIteration as e:
                 print()

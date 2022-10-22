@@ -34,12 +34,12 @@ for n_boots in n_boots_trials:
     stderr_b = bootstrap.bootstrap_stderr(data, stat_fn=corr_fn, n_boots=n_boots)
     stderr_bs.append(stderr_b)
 
-#plt.plot(n_boots_trials, stderr_bs)
-#plt.show()
+# plt.plot(n_boots_trials, stderr_bs)
+# plt.show()
 
 # Get a bootstrap sample of the statistics
 bstats = bootstrap.bootstrap_stat(data, stat_fn=corr_fn, n_boots=3200)
 
 # Histogram of the statistics is non-normal
-#plt.hist(bstats, bins=49)
-#plt.show()
+# plt.hist(bstats, bins=49)
+# plt.show()

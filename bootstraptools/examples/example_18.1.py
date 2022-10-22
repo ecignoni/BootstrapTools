@@ -1,5 +1,6 @@
 import sys
-sys.path.append('../')
+
+sys.path.append("../")
 import bootstrap
 
 import numpy as np
@@ -9,7 +10,7 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import UnivariateSpline
 from functools import partial
 
-data = pd.read_csv('../data/table_18.1.csv')
+data = pd.read_csv("../data/table_18.1.csv")
 data = data.values
 
 age = data[:, 1].astype(float)
@@ -21,12 +22,15 @@ logC = logC[idxsort]
 
 spl = UnivariateSpline(age, logC, k=3, s=14)
 
+
 def plot():
-    plt.scatter(age, logC, ec='k', fc='w')
-    plt.plot(age, spl(age), c='k')
+    plt.scatter(age, logC, ec="k", fc="w")
+    plt.plot(age, spl(age), c="k")
     plt.show()
 
-#plot()
+
+# plot()
+
 
 def loss_fn(x, lambd, a_orig, b_orig):
     a, b = x[:, 0], x[:, 1]
@@ -34,7 +38,8 @@ def loss_fn(x, lambd, a_orig, b_orig):
     a = a[idxsort]
     b = b[idxsort]
     spl = UnivariateSpline(a, b, k=3, s=lambd)
-    return np.mean((b_orig - spl(a_orig))**2)
+    return np.mean((b_orig - spl(a_orig)) ** 2)
+
 
 x = np.column_stack((age, logC))
 
@@ -46,8 +51,10 @@ for lambd in lambda_grid:
     bpse = np.mean(bpse[~np.isnan(bpse)])
     bootstrap_errors.append(bpse)
 
+
 def plot():
-    plt.plot(lambda_grid, bootstrap_errors, '-o', c='k')
+    plt.plot(lambda_grid, bootstrap_errors, "-o", c="k")
     plt.show()
+
 
 plot()

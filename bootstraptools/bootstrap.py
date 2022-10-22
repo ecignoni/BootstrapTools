@@ -13,7 +13,9 @@ from scipy import stats as sp_stats
 try:
     from tqdm import tqdm
 
-    verb_iter = partial(tqdm, bar_format='{l_bar}{bar:20}|({rate_fmt}{postfix})', desc='Bootstrapping')
+    verb_iter = partial(
+        tqdm, bar_format="{l_bar}{bar:20}|({rate_fmt}{postfix})", desc="Bootstrapping"
+    )
 except ModuleNotFoundError:
 
     class verbose_iterator:
